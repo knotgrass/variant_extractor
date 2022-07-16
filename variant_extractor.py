@@ -1,8 +1,6 @@
-import logging, copy, random, sqlite3, types, six, gzip, collections
+import logging
 from collections import defaultdict, namedtuple
-from os.path import join, dirname
-
-from lib.pubSeqTables import threeToOneLower, threeToOne, oneToThree, aaToDna, dnaToAa
+from lib.pubSeqTables import threeToOneLower#, threeToOne, oneToThree, aaToDna, dnaToAa
 # from lib.pm_pycbio.hgdata.Psl import Psl
 from lib import maxCommon, pubAlg
 from colorama import Fore
@@ -11,6 +9,7 @@ from colorama import Fore
 # try:                import re2 as re
 # except ImportError: import re
 import re
+from rich import print
 
 
 # this setting can be changed to allow protein variants
@@ -50,8 +49,7 @@ VariantFields = [
     ]
 
 # A completely resolved mutation
-mutFields = \
-    (
+mutFields = (
     "chrom",  # chromosome
     "start",  # on chrom
     "end",  # on chrom
@@ -771,9 +769,18 @@ def findVariantDescriptions(text, docId, exclPos=set()):
 
 
 if __name__ == '__main__':
+    
     text_path = '/home/agent/Documents/AVADA/fullText_classify/data/1316610_popler.txt'
     with open(text_path, 'r', encoding= 'utf-8') as f:
         text = f.read().strip()
-    var = findVariantDescriptions(text, "")
-    print(Fore.LIGHTGREEN_EX)
-    print(var)
+    var = findVariantDescriptions(text, "1316610")
+
+    print('prot', '=' * 120)
+    for prot in var['prot']: print(prot)
+    
+    print('dna', '=' * 120)
+    for dna in var['dna']: print(dna)
+    
+    
+    print('dbSnp', '=' * 120)
+    for dbSnp in var['dbSnp']: print(dbSnp)
