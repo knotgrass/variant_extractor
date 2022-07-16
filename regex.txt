@@ -1,0 +1,51 @@
+seqType	mutType	patName	pat
+dna	del	10083731	deletion of nt{pos}{origDnas}
+dna	del		{sep}c\.{fromPos}{underscore}{toPos}[, ]*?del(?!ins){space}?{origDnas}(?!ins){fs}?
+dna	del		{sep}c\.{pos}[, ]*?del(?!ins){space}?{origDna}(?!((ins)|{noDnas})){fs}?
+dna	del		{sep}{fromPos}{underscore}{toPos}[, ]*?del(?!ins){space}?{origDnas}(?!ins){fs}?
+dna	del		{sep}{pos}[, ]*?del(?!ins){space}?{origDna}(?!((ins)|{noDnas})){fs}?
+dna	del		{sep}c\.{space}?{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!(ins)|{noDnas}){space}?{length}(?!(ins)|{noDnas}){fs}?
+dna	del		{sep}c\.{space}?{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!(ins)|{noDnas}){space}?{fs}?
+dna	del		{sep}{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!(ins)|{noDnas}){space}?{length}(?!(ins)|{noDnas}){fs}?
+dna	del		{sep}{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!({dnas}|(ins))){space}?{fs}?
+dna	del		{sep}{pos}[, ]*?del(?!ins){space}?{origDna}(?!(ins)|{noDnas}){space}?{fs}?
+dna	del		{sep}c\.{pos}del(?!(ins)|{noDnas}){space}?{fs}?
+prot	del		{sep}p\.{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!ins){space}?{origAasShort}{fs}?
+prot	del		{sep}p\.{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del(?!ins){space}?{origAasLong}{fs}?
+prot	del		{sep}p\.{origAaShort}{space}?{pos}{space}?del(?!(ins)|{noDnas}){fs}?
+prot	del		{sep}p\.{origAaLong}{space}?{pos}{space}?del(?!(ins)|{noDnas}){fs}?
+prot	fs		{sep}{origAaLong}{space}?{pos}{space}?{fs}
+prot	fs		{sep}{origAaShort}{space}?{pos}{space}?{fs}
+prot	fs		{sep}p\.{origAaLong}{space}?{pos}{space}?{fs}
+prot	fs		{sep}p\.{origAaShort}{space}?{pos}{space}?{fs}
+dna	dup		{sep}c\.{pos}[, ]*?dup{space}?{origDna}{fs}?
+dna	dup		{sep}c\.{fromPos}{underscore}{toPos}[, ]*?dup{space}?{origDnas}{fs}?
+prot	ins		{sep}p\.{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?ins{space}?{mutAasShort}{fs}?
+prot	ins		{sep}p\.{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?ins{space}?{mutAasLong}{fs}?
+prot	ins		{sep}p\.{firstAaShort}{space}?{fromPos}{space}?{underscore}{space}?{secondAaShort}{space}?{toPos}[, ]*?ins{space}?{length}{fs}?
+prot	ins		{sep}p\.{firstAaLong}{space}?{fromPos}{space}?{underscore}{space}?{secondAaLong}{space}?{toPos}[, ]*?ins{space}?{length}{fs}?
+prot	del		{sep}p\.{firstAaShort}{space}?{fromPos}{space}?{underscore}{space}?{secondAaShort}{space}?{toPos}[, ]*?del(?!(ins)|{noDnas}){space}?{length}{fs}?
+prot	del		{sep}p\.{firstAaLong}{space}?{fromPos}{space}?{underscore}{space}?{secondAaLong}{space}?{toPos}[, ]*?del(?!(ins)|{noDnas}){space}?{length}{fs}?
+dna	sub		substitution of {origDna} by {mutDna} at nucleotide position [^0-9]{{0,3}}{pos}
+dna	sub	c.123T>A	{sep}c\.{pos}[, ]*?{origDna}{space}?{arrow}{space}?{mutDna}{space}?{fs}?
+dna	sub	c.123T>A	{sep}{pos}{space}?{origDna}{space}?{arrow}{space}?{mutDna}{space}?{fs}?
+dna	splicing		{sep}c\.{pos}{space}?{plusMinus}{space}?{offset}[, ]*?{origDna}{space}?{arrow}{space}?{mutDna}
+dna	splicing		{sep}{pos}{space}?{plusMinus}{space}?{offset}[, ]*?{origDna}{space}?{arrow}{space}?{mutDna}
+#dna	sub	10090526	codon {poss} {origCodon}-{mutCodon}
+#dna	sub	11005141	{origCodon}\u2192{mutCodon}
+#dbSnp	dbSnp	rs/SNP+number	{sep}(SNP|dbSNP|rs|Rs|RefSNP|refSNP)( |-| no.| no| No.| ID|ID:| #|#| number)?[ ]?(?P<rsId>[0-9]{{4,19}})
+prot	sub		{sep}{origAaShort}{poss}{arrow}?{mutAaShort}{fs}?
+prot	sub		{sep}{origAaLong}{pos}{arrow}?{mutAaLong}{fs}?
+#prot	sub	11005141	{origAaLong}\u2192{mutAaLong}{fs}?
+prot	sub		{sep}p\.\(?{origAaLong}{pos}{arrow}?{mutAaLong}{fs}?
+prot	sub		{sep}p\.\(?{origAaShort}{pos}{arrow}?{mutAaShort}{fs}?
+dna	dup		{sep}c\.{space}?{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?dup{fs}?
+dna	delins		{sep}{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?delins{space}?{dnas}{space}?{fs}?
+dna	delins		{sep}{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?del{space}?{origDnas}ins{mutDnas}{fs}?
+dna	delins		{sep}{pos}[, ]*?delins{space}?{dnas}{space}?{fs}?
+dna	delins		{sep}{pos}[, ]*?del{space}?{origDna}ins{mutDnas}{fs}?
+dna	ins		{sep}c\.{space}?{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?ins{space}?{dnas}{fs}?
+dna	ins		{sep}c\.{space}?{fromPos}{space}?{underscore}{space}?{toPos}[, ]*?ins{space}?{length}{space}?{fs}?
+dna	sub		{sep}{origDna}{space}?{pos}{space}?{arrow}?{space}?{mutDna}
+dna	ins		{sep}{pos}[, ]*?ins{space}?{dnas}{space}?{fs}?
+dna	ivssub		{sep}IVS[ -]?{ivsNumber}{space}?{plusMinus}{space}?{offset}{space}?\(?{origDna}{space}?{arrow}{space}?{mutDna}\)?
