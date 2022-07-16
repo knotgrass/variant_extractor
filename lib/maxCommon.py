@@ -9,7 +9,8 @@ import logging, os, sys, tempfile, csv, collections, types, codecs, gzip, \
 from types import *
 from os.path import isfile, isdir, getsize, abspath, realpath, dirname
 from collections import defaultdict
-
+IntType = int
+StringType = str
 # global flag to suppress all removal of temporary files, only useful for debugging
 keepTemp = False
 

@@ -9,13 +9,14 @@ from __future__ import print_function
 # module will call itself on the compute nodes if run on a cluster (->findFileSubmitJobs)
 
 import logging, sys, os, shutil, glob, optparse, copy, \
-    types, string, gzip, doctest, marshal, random
-sys.path.append('/home/agent/Documents/AVADA/Variant-Descriptions/lib')
-from os.path import *
-from maxCommon import *
+    types, string, gzip, doctest, marshal, random, time, re, tempfile
 
-import pubGeneric, maxRun, pubConf, pubStore, maxCommon
+from os.path import join, basename, splitext, dirname, isfile, abspath, isdir
+sys.path.append(dirname(__file__))
+# from .maxCommon import *
 
+from . import pubGeneric, maxRun, pubConf, pubStore, maxCommon
+basestring = str
 # extension of map output files
 MAPREDUCEEXT = ".marshal.gz"
 
@@ -840,7 +841,7 @@ def getLastOutType(alg, paramDict):
 
 def splitList(a, n):
     k, m = len(a) / n, len(a) % n
-    return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in xrange(n))
+    return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n)) #DEBUG xrange = range
 
 def writeParts(ll, outDir):
     " writes lines to numbered textFiles in outDir "
