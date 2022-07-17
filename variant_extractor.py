@@ -2,8 +2,8 @@ import logging
 from collections import defaultdict, namedtuple
 from lib.pubSeqTables import threeToOneLower#, threeToOne, oneToThree, aaToDna, dnaToAa
 # from lib.pm_pycbio.hgdata.Psl import Psl
-from lib import maxCommon, pubAlg
-from colorama import Fore
+from lib import pubAlg#, maxCommon
+from pubMunch import maxCommon
 # from pygr.seqdb import SequenceFileDB
 # from pyfaidx import Fasta
 # try:                import re2 as re
