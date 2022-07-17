@@ -1,1 +1,2 @@
 git+https://github.com/diekhans/pycbio.git #pycbio
+git+https://github.com/maximilianh/pubMunch3.git #pubMunch3
