@@ -1,6 +1,8 @@
 # variant_extractor
 Extracting candidate genes and variants 
 
+# run variant_extractor.py
+python variant_extractor.py path/to/text.txt
 ## Useful repo
 
 <details><summary> <b>Expand</b> </summary>
