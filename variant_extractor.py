@@ -8,7 +8,7 @@ from pubMunch import maxCommon
 # from pyfaidx import Fasta
 # try:                import re2 as re
 # except ImportError: import re
-import re
+import re, sys
 from rich import print
 
 
@@ -100,7 +100,7 @@ logger.setLevel(logging.DEBUG)
 logger.info("Loading gene information for varFinder.py")
 
 
-def parseRegex(regex_path:str = 'regex.txt'):
+def parseRegex(regex_path:str = 'data/regex.txt'):
     """ parse and compile regexes to list (seqType, mutType, patName, pat) """
     # read regexes, translate placeholders to long form and compile
     replDict = {
@@ -716,7 +716,7 @@ def findVariantDescriptions(text, docId, exclPos=set()):
     >>> findVariantDescriptions("The R71G BRCA1 mutation is really a p.R71G mutation")
     {'prot': [(VariantDescription(mutType=u'sub',seqType=u'prot',seqId=u'None',geneId=u'',start=u'70',end=u'71',origSeq=u'R',mutSeq=u'G'), [Mention(patName=u'{sep}p\\\\.\\\\(?{origAaShort}{pos}{mutAaShort}{fs}', start=35, end=42), Mention(patName=u'{sep}{origAaShort}{pos}{mutAaShort}', start=3, end=8)])]}
     """
-    regexes = parseRegex('regex.txt')
+    regexes = parseRegex('data/regex.txt')
 
     exclPos = set(exclPos)
     varMentions = defaultdict(list)
@@ -769,18 +769,24 @@ def findVariantDescriptions(text, docId, exclPos=set()):
 
 
 if __name__ == '__main__':
-    
-    text_path = '/home/agent/Documents/AVADA/fullText_classify/data/1316610_popler.txt'
-    with open(text_path, 'r', encoding= 'utf-8') as f:
+    with open(sys.argv[1], 'r', encoding= 'utf-8') as f:
         text = f.read().strip()
-    var = findVariantDescriptions(text, "1316610")
+
+    typeToDescription = findVariantDescriptions(text, docId="")
+    with open('type_to_description.txt', 'w+') as f:
+        for entry in typeToDescription:
+            f.write(str(entry) + "\n")
+            f.write(str(typeToDescription.get(entry, [])) + "\n")
+    dbSnp = typeToDescription.get("dbSnp", [])
 
     print('prot', '=' * 120)
-    for prot in var['prot']: print(prot)
+    for prot in typeToDescription['prot']: 
+        print(prot)
     
     print('dna', '=' * 120)
-    for dna in var['dna']: print(dna)
-    
+    for dna in typeToDescription['dna']: 
+        print(dna)
     
     print('dbSnp', '=' * 120)
-    for dbSnp in var['dbSnp']: print(dbSnp)
+    for dbSnp in typeToDescription['dbSnp']: 
+        print(dbSnp)
