@@ -7,6 +7,7 @@ python variant_extractor.py path/to/text.txt
 
 <details><summary> <b>Expand</b> </summary>
 
+* [python-poppler](https://github.com/cbrunet/python-poppler)  
 * [pubMunch3](https://github.com/maximilianh/pubMunch3)
 * [pubMunch](https://github.com/maximilianh/pubMunch)
 * [variant2vec](https://github.com/rcurrie/variant2vec)
