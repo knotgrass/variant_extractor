@@ -3,10 +3,11 @@ Extracting candidate genes and variants
 
 # run variant_extractor.py
 python variant_extractor.py path/to/text.txt
-## Useful repo
+## Acknowledgements
 
 <details><summary> <b>Expand</b> </summary>
-
+  
+* [avada](https://bitbucket.org/bejerano/avada/src/master/)
 * [python-poppler](https://github.com/cbrunet/python-poppler)  
 * [pubMunch3](https://github.com/maximilianh/pubMunch3)
 * [pubMunch](https://github.com/maximilianh/pubMunch)
